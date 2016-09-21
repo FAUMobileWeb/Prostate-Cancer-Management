@@ -1,0 +1,150 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
+        <title>New Website</title>
+        <link type="text/css" rel="stylesheet" href="stylesheet.css">
+        
+        <script src="jquery-3.1.0.min.js"></script>
+        <script>window.jQuery || document.write('<script src="jquery-3.1.0.min.js"><\/script>')</script>
+        <script src="code.js"></script>
+    </head>
+    
+    <body>
+        <nav class="NavMenu">
+            <div class="NavItem"><a href="index.html">Home</a></div>
+            <div class="NavItem"><a href="projects.html">Projects</a></div>
+            <div class="NavItem"><a href="database.html">DB</a></div>
+            <div class="NavItem"><a href="about.html">About</a></div>
+        </nav>
+        
+        <div class="body">
+            <h1>Binary Operators</h1><br><br>
+            <p>The four main binary operators are:</p>
+            <ul>
+                <li>AND    <img src="HTML/and.jpg" style="width:1.5em; height: 1em;"><ul><li>The AND operations only equals true when all the inputs are true, and is otherwise equal to false.</li></ul></li>
+                <li>OR <img src="HTML/or.jpg" style="width:2em; height: 1em;"><ul><li>The OR operation only equals to true when at least one input equals to true, and is otherwise equal to false.</li></ul></li>
+                <li>NOT <img src="HTML/not.jpg" style="width:2.2em; height: 1em;"><ul><li>The NOT operations simply inverts the value of the input, which means if the input is equal to true, the output is equal to false and vice-versa.</li></ul></li>
+                <li>XOR <img src="HTML/xor.jpg" style="width:2em; height: 1em;"><ul><li>The XOR operation is only true when the inputs have distinct values, and is otherwise(when all inputs are the same value) false.</li></ul></li>
+            </ul>
+            <br>
+            
+            <div class="center">TRUTH TABLES</div>
+            <table>
+                <tr>
+                    <th colspan="3">AND</th>
+                </tr>
+                <tr>
+                    <td>A</td>
+                    <td>B</td>
+                    <td>A AND B</td>
+                </tr>
+                <tr>
+                    <td>F</td>
+                    <td>F</td>
+                    <td>F</td>
+                </tr>
+                <tr>
+                    <td>F</td>
+                    <td>T</td>
+                    <td>F</td>
+                </tr>
+                <tr>
+                    <td>T</td>
+                    <td>F</td>
+                    <td>F</td>
+                </tr>
+                <tr>
+                    <td>T</td>
+                    <td>T</td>
+                    <td>T</td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <th colspan="3">OR</th>
+                </tr>
+                <tr>
+                    <td>A</td>
+                    <td>B</td>
+                    <td>A OR B</td>
+                </tr>
+                <tr>
+                    <td>F</td>
+                    <td>F</td>
+                    <td>F</td>
+                </tr>
+                <tr>
+                    <td>F</td>
+                    <td>T</td>
+                    <td>T</td>
+                </tr>
+                <tr>
+                    <td>T</td>
+                    <td>F</td>
+                    <td>T</td>
+                </tr>
+                <tr>
+                    <td>T</td>
+                    <td>T</td>
+                    <td>T</td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <th colspan="2">NOT</th>
+                </tr>
+                <tr>
+                    <td>A</td>
+                    <td>NOT A</td>
+                </tr>
+                <tr>
+                    <td>F</td>
+                    <td>T</td>
+                </tr>
+                <tr>
+                    <td>T</td>
+                    <td>F</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <th colspan="3">XOR</th>
+                </tr>
+                <tr>
+                    <td>A</td>
+                    <td>B</td>
+                    <td>A XOR B</td>
+                </tr>
+                <tr>
+                    <td>F</td>
+                    <td>F</td>
+                    <td>F</td>
+                </tr>
+                <tr>
+                    <td>F</td>
+                    <td>T</td>
+                    <td>T</td>
+                </tr>
+                <tr>
+                    <td>T</td>
+                    <td>F</td>
+                    <td>T</td>
+                </tr>
+                <tr>
+                    <td>T</td>
+                    <td>T</td>
+                    <td>F</td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>
