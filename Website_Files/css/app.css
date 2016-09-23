@@ -1,0 +1,42 @@
+html,
+body {
+    background: url("../images/prostate-cancer-bg.jpg");
+    background-size: 300px, 300px;
+}
+
+.container {
+    padding-bottom: 45px;
+}
+
+.labels {
+    width: 15%;
+    min-width: 13rem;
+    overflow: hidden;
+    display: inline-block;
+    padding: 10px;
+    padding-bottom: 5px;
+}
+
+.labels img {
+    border-radius: 100%;
+}
+
+.footer-img {
+    max-width: 55px;
+    display: inline-block;
+}
+
+.right {
+    float: right;
+}
+.left {
+    float: left;
+}
+
+.button {
+    display: inline-block;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
