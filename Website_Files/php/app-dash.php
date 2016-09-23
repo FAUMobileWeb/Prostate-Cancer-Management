@@ -50,7 +50,7 @@
 
     <body>
         <nav class="NavMenu">
-            <div class="NavItem"><a href="../prostate-cancer.html">Home</a></div>
+            <div class="NavItem"><a href="../index.html">Home</a></div>
             <div class="NavItem"><a href="app-dash.php">Dash</a></div>
             <div class="NavItem"><a href="../app-about.html">About</a></div>
         </nav>
