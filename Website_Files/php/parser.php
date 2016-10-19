@@ -1,10 +1,8 @@
 <?php
-session_start();
-// If user is logged in, header them away
-if(isset($_SESSION["username"])){
-	header("location: message.php?msg=NO to that weenis");
-    exit();
-}
+    if (isset($_SESSION['username'])) {
+        header("location: prostate-cancer.php#dashboard");
+        exit();
+    }
 ?>
 <?php
 // Ajax calls this NAME CHECK code to execute
@@ -88,9 +86,9 @@ if(isset($_POST["u"])){
 		}
 		// Email the user their activation link
 		$to = "$e";							 
-		$from = "email@something.com";
+		$from = "edossantos2014@fau.edu";
 		$subject = 'Prostate Cancer Account Activation';
-		$message = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Prostate Cancer Message</title></head><body style="margin:0px; font-family:Tahoma, Geneva, sans-serif;"><div style="padding:10px; background:#333; font-size:24px; color:#CCC;">Prostate Cancer Account Activation</div><div style="padding:24px; font-size:17px;">Hello '.$u.',<br /><br />Click the link below to activate your account when ready:<br /><br /><a href="http://lamp.cse.fau.edu/~edossantos2014/php/activation.php?id='.$uid.'&u='.$u.'&e='.$e.'&p='.$p_hash.'">Click here to activate your account now</a><br /><br />Login after successful activation using your:<br />* Username: <b>'.$u.'</b></div></body></html>';
+		$message = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Prostate Cancer Message</title></head><body style="margin:0px; font-family:Tahoma, Geneva, sans-serif;"><div style="padding:10px; background:#333; font-size:24px; color:#CCC;"><a href="http://lamp.cse.fau.edu/~edossantos2014/prostate-cancer.html"></a>Prostate Cancer Account Activation</div><div style="padding:24px; font-size:17px;">Hello '.$u.',<br /><br />Click the link below to activate your account when ready:<br /><br /><a href="http://lamp.cse.fau.edu/~edossantos2014/php/activation.php?id='.$uid.'&u='.$u.'&e='.$e.'&p='.$p_hash.'">Click here to activate your account now</a><br /><br />Login after successful activation using your:<br />* Username: <b>'.$u.'</b></div></body></html>';
 		$headers = "From: $from\n";
         $headers .= "MIME-Version: 1.0\n";
         $headers .= "Content-type: text/html; charset=iso-8859-1\n";

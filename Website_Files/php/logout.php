@@ -1,6 +1,4 @@
 <?php
-    session_start();
-
     $_SESSION = array();
 
     if (isset($_COOKIE["id"]) && isset($_COOKIE["user"]) && isset($_COOKIE["pass"])) {
@@ -17,7 +15,7 @@
     if (isset($_SESSION['username'])) {
         header("location: message.php?msg=Error:_Logout_Failed");
     } else {
-        header("location: http://lamp.cse.fau.edu/~edossantos2014/php/app-dash.php");
+        header("location: http://lamp.cse.fau.edu/~edossantos2014/prostate-cancer.php");
         exit();
     }
 ?>

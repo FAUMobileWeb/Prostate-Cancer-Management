@@ -1,7 +1,11 @@
-html,
-body {
-    background: url("../images/prostate-cancer-bg.jpg");
-    background-size: 300px, 300px;
+#background {
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: url("../images/prostate-cancer-bg.jpg") 0 0 no-repeat fixed;
+    background-size: cover;
 }
 
 .container {
@@ -9,17 +13,23 @@ body {
 }
 
 .labels {
-    width: 15%;
-    min-width: 13rem;
-    overflow: hidden;
     display: inline-block;
+    overflow: hidden;
+    width: 20%;
+    min-width: 13rem;
+    max-width: 40%;
     padding: 10px;
     padding-bottom: 5px;
+}
+.labels img {
+    width: inherit;
+    min-width: inherit;
+    max-width: inherit;
 }
 
 .labels img {
     border-radius: 100%;
-}
+}   
 
 .footer-img {
     max-width: 55px;
@@ -39,4 +49,8 @@ body {
     color: white;
     padding: 10px;
     border-radius: 10px;
+}
+
+.body a {
+    color: blue;
 }

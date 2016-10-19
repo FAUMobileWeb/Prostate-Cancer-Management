@@ -74,26 +74,48 @@ function signup() {
 function login() {
     var u = _("username").value;
     var p = _("password").value;
-     _("status").innerHTML = "No username or password entered.";
     if (u == "" || p == "")
         _("status").innerHTML = "No username or password entered.";
     else {
         _("loginbtn").style.display = "none";
         _("status").innerHTML = "Please wait...";
-        var ajax = ajaxObj("POST", "app-login.php");
+        var ajax = ajaxObj("POST", "logincheck.php");
         ajax.onreadystatechange = function() {
             if (ajax.responseText == "login_failed") {
                 _("status").innerHTML = "Wrong username or password";
                 _("loginbtn").style.display = "inline-block";
             } else {
-                window.location = "app-dash.php";
+                window.location = "../prostate-cancer.php#dashboard";
             }
         }
         ajax.send("u="+u+"&p="+p);
     }
 }
 
+function logout() {
+    var ajax = ajaxObj("POST", "php/logout.php");
+    ajax.onreadystatechange = function() {
+        location.reload();
+    }
+    ajax.send();
+}
+
 /* function addEvents(){
 	_("elemID").addEventListener("click", func, false);
 }
 window.onload = addEvents; */
+
+function toggleFullScreen() {
+  var doc = window.document;
+  var docEl = doc.documentElement;
+
+  var requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
+  var cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
+
+  if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
+    requestFullScreen.call(docEl);
+  }
+  else {
+    cancelFullScreen.call(doc);
+  }
+}

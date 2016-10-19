@@ -1,5 +1,4 @@
 <?php
-    session_start();
     include_once("php_connect.php");
 
     $user_ok = false;

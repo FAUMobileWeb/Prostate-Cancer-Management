@@ -1,12 +1,4 @@
 <?php
-    session_Start();
-
-    if (isset($_SESSION['username'])) {
-        header("location: app-dash.php");
-        exit();
-    }
-?>
-<?php
     if (isset($_POST["u"])) {
         include_once("php_connect.php");
         
