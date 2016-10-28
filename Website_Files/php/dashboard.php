@@ -94,7 +94,6 @@
     
     <div role="footer" class="center">
         <div class="ui-body-b ui-body center inline-block border-radius">
-            <a href="index.html" rel="external" class="no-decoration">Lamp Home Page</a>
             <button onclick="toggleFullScreen()">Fullscreen</button>
         </div>
     </div>
