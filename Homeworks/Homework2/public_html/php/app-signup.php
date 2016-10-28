@@ -1,15 +1,7 @@
 <?php
-    $message = "";
-    $msg = preg_replace('#[^a-z 0-9.:_()]#i', '', $_GET['msg']);
-    if($msg == "activation_failure"){
-        $message = '<h2>Activation Error</h2> Sorry there seems to have been an issue activating your account at this time. We have already notified ourselves of this issue and we will contact you via email when we have identified the issue.';
-    } else if($msg == "activation_success"){
-        $message = '<h2>Activation Success</h2> Your account is now activated.';
-    } else {
-        $message = $msg;
-    }
+    include_once("redirect-if-logged.php");
+    include_once("parser.php");
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,18 +28,34 @@
     <div class="ui-body-b ui-body">
         <div data-role="navbar">
             <ul>
-                <li><a href="../prostate-cancer.html#home" rel="external">Home</a></li>
-                <li><a href="../prostate-cancer.html#dashboard" rel="external">Dashboard</a></li>
-                <li><a href="../prostate-cancer.html#about" rel="external">About</a></li>
+                <li><a  data-rel="back">Back</a></li>
             </ul>
         </div>
     </div>
 
 	<div role="main" class="ui-content">
         <div class="body">
-            <h1>Message</h1><br><br>
-
-            <p><?php   echo $message;  ?></p><br><br>
+            <h1>Sign Up</h1><br><br>
+            
+            <form name="signupform" id="signupform" onsubmit="return false;">
+                <div>Username: </div>
+                <input id="username" type="text" onblur="checkusername()" onkeyup="restrict('username')" maxlength="100">
+                <span id="usernamestatus"></span>
+                <div>Email Address:</div>
+                <input id="email" type="text" onfocus="emptyElement('status')" onkeyup="restrict('email')" maxlength="100">
+                <div>Password:</div>
+                <input id="pass1" type="password" onfocus="emptyElement('status')" maxlength="100">
+                <div>Confirm Password:</div>
+                <input id="pass2" type="password" onfocus="emptyElement('status')" maxlength="100">
+                <div>Gender:</div>
+                <select id="gender" onfocus="emptyElement('status')">
+                    <option value=""></option>
+                    <option value="m">Male</option>
+                    <option value="f">Female</option>
+                </select><br><br>
+                <button id="signupbtn" onclick="signup()">Create Account</button>
+                <span id="status"></span>
+            </form>
         </div>
     </div>
     

@@ -1,15 +1,6 @@
 <?php
-    $message = "";
-    $msg = preg_replace('#[^a-z 0-9.:_()]#i', '', $_GET['msg']);
-    if($msg == "activation_failure"){
-        $message = '<h2>Activation Error</h2> Sorry there seems to have been an issue activating your account at this time. We have already notified ourselves of this issue and we will contact you via email when we have identified the issue.';
-    } else if($msg == "activation_success"){
-        $message = '<h2>Activation Success</h2> Your account is now activated.';
-    } else {
-        $message = $msg;
-    }
+    include_once("redirect-if-logged.php");
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,18 +27,27 @@
     <div class="ui-body-b ui-body">
         <div data-role="navbar">
             <ul>
-                <li><a href="../prostate-cancer.html#home" rel="external">Home</a></li>
-                <li><a href="../prostate-cancer.html#dashboard" rel="external">Dashboard</a></li>
-                <li><a href="../prostate-cancer.html#about" rel="external">About</a></li>
+                <li><a data-rel="back">Back</a></li>
             </ul>
         </div>
     </div>
 
 	<div role="main" class="ui-content">
         <div class="body">
-            <h1>Message</h1><br><br>
+            <h1>Login</h1><br><br>
 
-            <p><?php   echo $message;  ?></p><br><br>
+            <form id="loginform" onsubmit="return false;">
+                <div>Username:</div>
+                <input type="text" id="username" onfocus="emptyElement('status')" maxlength="100">
+                <div>Password:</div>
+                <input type="password" id="password" onfocus="emptyElement('status')" maxlength="100">
+                <br>
+                <button id="loginbtn" onclick="login()">Log In</button>
+                <br>
+                <p id="status"></p>
+                <br>
+                <a href="#">Forgot Your Password?</a>
+            </form>
         </div>
     </div>
     
