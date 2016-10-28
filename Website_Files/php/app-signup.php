@@ -1,4 +1,5 @@
 <?php
+    include_once("redirect-if-logged.php");
     include_once("parser.php");
 ?>
 <!DOCTYPE html>

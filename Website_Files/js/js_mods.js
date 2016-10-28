@@ -81,11 +81,13 @@ function login() {
         _("status").innerHTML = "Please wait...";
         var ajax = ajaxObj("POST", "logincheck.php");
         ajax.onreadystatechange = function() {
-            if (ajax.responseText == "login_failed") {
-                _("status").innerHTML = "Wrong username or password";
-                _("loginbtn").style.display = "inline-block";
-            } else {
-                window.location = "../prostate-cancer.php#dashboard";
+            if(ajaxReturn(ajax) == true) {
+                if (ajax.responseText == "login_success") {
+                    window.location = "../prostate-cancer.php#dashboard";
+                } else {
+                    _("status").innerHTML = ajax.responseText;
+                    _("loginbtn").style.display = "inline-block";
+                }
             }
         }
         ajax.send("u="+u+"&p="+p);

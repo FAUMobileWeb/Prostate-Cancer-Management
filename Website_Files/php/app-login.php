@@ -1,11 +1,5 @@
 <?php
-    if (isset($_SESSION['username'])) {
-        header("location: prostate-cancer.php#dashboard");
-        exit();
-    }
-?>
-<?php
-    include_once("logincheck.php");
+    include_once("redirect-if-logged.php");
 ?>
 <!DOCTYPE html>
 <html>

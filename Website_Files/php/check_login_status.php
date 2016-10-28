@@ -1,5 +1,6 @@
 <?php
     include_once("php_connect.php");
+    session_start();
 
     $user_ok = false;
     $log_id = "";
