@@ -121,3 +121,94 @@ function toggleFullScreen() {
     cancelFullScreen.call(doc);
   }
 }
+
+function checkWeight() {
+    var weight = $('#weightInput').val();
+    if (weight > 700) {
+        _('status').innerHTML = "Weight value too high!";
+    } else if (weight < 10) {
+        _('status').innerHTML = "Weight value too low!";
+    }
+    emptyElement('weightInput');
+}
+
+function checkFileType() {
+    emptyElement('status');
+    emptyElement('filesSize');
+
+    var files = _('fileInput').files;
+    var exts = [];
+    var totalSize = 0;
+    var noErrors = true;
+    for (var i = 0; i < files.length; i++) {
+        exts.push(files[i].name.split('.').pop().toLowerCase());
+        totalSize += files[i].size;
+    }
+
+    var invalidExts = [];
+    for (i = 0; i < exts.length; i++) {
+        if (exts[i] != 'gif' && exts[i] != 'png' && exts[i] != 'jpg' &&
+           exts[i] != 'jpeg' && exts[i] != 'jpe') {
+            invalidExts.push(exts[i]);
+        }
+    }
+
+    if (invalidExts.length != 0) {
+        var msg = '';
+        for (i = 0; i < invalidExts.length; i++) {
+            msg += invalidExts[i] + ' ';
+        }
+        msg += '- Invalid file extensions!\n';
+        $('#fileInput').val("");
+        noErrors = false;
+    }
+    
+    if (totalSize > 10000000) {
+        noErrors = false;
+        $('#fileInput').val("");
+        msg += '- Max of 10MB uploads at once!\n';
+    }
+    
+    if (noErrors) {
+        _('filesSize').innerHTML = (totalSize / 1000000).toFixed(2) + 'MB';
+    } else {
+        _('filesSize').innerHTML = '';
+        _('status').innerHTML = msg;
+    }
+}
+
+function openData(row_num, id) {
+    if (_('display_' + row_num).style.display === "none") {
+        _('display_' + row_num).style.display = "inline";
+    } else {
+        _('display_' + row_num).style.display = "none";
+    }
+    
+    var ajax = ajaxObj("POST", "get_data.php");
+    ajax.onreadystatechange = function() {
+        if(ajaxReturn(ajax) == true) {
+            if (ajax.responseText != "") {
+                 _('popup').innerHTML = ajax.responseText;
+
+                var elements = _('popup').children;
+                var length = elements.length;
+                for (var i = 0; i < length; i++) {
+                    elements[i].style.width = parseInt(100 / length) + '%';
+                }
+            } else {
+                _('image-link-' + id).style.display = 'none';
+            }
+        }
+    }
+    ajax.send("i="+id);
+}
+
+function search(string) {
+    var ajax = ajaxObj("POST", "get_data.php");
+    ajax.onreadystatechange = function() {
+        if(ajaxReturn(ajax) == true) {
+            _('data').innerHTML = ajax.responseText;
+        }
+    }
+    ajax.send("s="+string);
+}

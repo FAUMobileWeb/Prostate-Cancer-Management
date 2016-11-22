@@ -1,15 +1,3 @@
-<?php
-    $message = "";
-    $msg = preg_replace('#[^a-z 0-9.:_()]#i', '', $_GET['msg']);
-    if($msg == "activation_failure"){
-        $message = '<h2>Activation Error</h2> Sorry there seems to have been an issue activating your account at this time. We have already notified ourselves of this issue and we will contact you via email when we have identified the issue.';
-    } else if($msg == "activation_success"){
-        $message = '<h2>Activation Success</h2> Your account is now activated.';
-    } else {
-        $message = $msg;
-    }
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,33 +17,41 @@
 </head>
 
 <body>
-
+    
 <div id="background"></div>
     
-<div data-role="page">
+<div data-role="page" id="dashboard">
     <div class="ui-body-b ui-body">
         <div data-role="navbar">
             <ul>
                 <li><a href="../prostate-cancer.html#home" rel="external">Home</a></li>
-                <li><a href="../prostate-cancer.html#dashboard" rel="external">Dashboard</a></li>
+                <li><a href="dashboard.php">Dashboard</a></li>
                 <li><a href="../prostate-cancer.html#about" rel="external">About</a></li>
             </ul>
         </div>
     </div>
-
-	<div role="main" class="ui-content">
+    
+    <div role="main" class="ui-content">
+        <script>search('');</script>
+        
         <div class="body">
-            <h1>Message</h1><br><br>
-
-            <p><?php   echo $message;  ?></p><br><br>
+            <h1>View Data</h1><br><br>
             
-            <a data-rel="back"><div class="button">Back</div></a>
+            <input class="search-button" onkeyup="search(this.value)" type="search" name="search" id="search" value="" />
+            <br>
+
+            <div id="data">
+                
+            </div>
         </div>
+    </div>
+    
+    <div data-role="popup" id="popup" data-overlay-theme="a" data-corners="false" data-tolerance="30,15">
     </div>
     
     <div role="footer" class="center">
         <div class="ui-body-b ui-body center inline-block border-radius">
-            <a href="index.html" rel="external" class="no-decoration">Lamp Home Page</a>
+            <a href="../index.html" rel="external" class="no-decoration">Lamp Home Page</a>
             <button onclick="toggleFullScreen()">Fullscreen</button>
         </div>
     </div>

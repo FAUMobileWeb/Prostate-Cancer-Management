@@ -78,9 +78,9 @@ if(isset($_POST["u"])){
 		$sql = "INSERT INTO useroptions (id, username) VALUES ('$uid','$u')";
 		$query = mysqli_query($db, $sql);
 		// Create directory(folder) to hold each user's files(pics, MP3s, etc.)
-		if (!file_exists("../users/$u")) {
+		/*if (!file_exists("../users/$u")) {
 			mkdir("../users/$u", 0755);
-		}
+		}*/
 		// Email the user their activation link
 		$to = "$e";							 
 		$from = "edossantos2014@fau.edu";

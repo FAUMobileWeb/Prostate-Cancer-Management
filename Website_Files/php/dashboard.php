@@ -80,9 +80,9 @@
                         <strong>
                             <p style="font-size:1.2em;">Welcome '.$u.'</p><br>
                             <a href="app-upload.php">Upload Data</a><br>
-                            <a href="app-upload.php">View Data</a><br>
-                            <a href="app-upload.php">Data Results</a><br>
-                            <a href="app-upload.php">Edit Settings</a>
+                            <a href="app-view.php">View Data</a><br>
+                            <a href="app-results.php">Data Results</a><br>
+                            <a href="app-settings.php">Edit Settings</a>
                         </strong>
                         <br>
                         <button onclick="logout()">Logout</button>
@@ -94,6 +94,7 @@
     
     <div role="footer" class="center">
         <div class="ui-body-b ui-body center inline-block border-radius">
+            <a href="../index.html" rel="external" class="no-decoration">Lamp Home Page</a>
             <button onclick="toggleFullScreen()">Fullscreen</button>
         </div>
     </div>
