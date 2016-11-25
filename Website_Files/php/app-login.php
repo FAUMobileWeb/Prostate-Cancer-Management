@@ -1,6 +1,7 @@
 <?php
     include_once("redirect-if-logged.php");
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>

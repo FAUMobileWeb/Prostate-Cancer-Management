@@ -1,3 +1,7 @@
+<?php
+    include_once("check_login_status.php");
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +13,12 @@
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    
+    <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+    <script src="https://www.amcharts.com/lib/3/serial.js"></script>
+    <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+    <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
     
     <link type="text/css" rel="stylesheet" href="../css/stylesheet.css">
     <link type="text/css" rel="stylesheet" href="../css/app.css">
@@ -35,6 +45,9 @@
         <div class="body">
             <h1>Data Results</h1><br><br>
             
+            <div id="chartdiv"></div>
+            <br>
+            <strong id="status"></strong>
         </div>
     </div>
     
@@ -46,5 +59,6 @@
     </div>
 </div>
 
+    <script>getGraph();</script>
 </body>
 </html>

@@ -80,9 +80,8 @@
                         <strong>
                             <p style="font-size:1.2em;">Welcome '.$u.'</p><br>
                             <a href="app-upload.php">Upload Data</a><br>
-                            <a href="app-view.php">View Data</a><br>
-                            <a href="app-results.php">Data Results</a><br>
-                            <a href="app-settings.php">Edit Settings</a>
+                            <a href="app-view.php" rel="external">View Data</a><br>
+                            <a href="app-results.php" rel="external">Data Results</a><br>
                         </strong>
                         <br>
                         <button onclick="logout()">Logout</button>

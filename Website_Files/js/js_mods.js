@@ -212,3 +212,69 @@ function search(string) {
     }
     ajax.send("s="+string);
 }
+
+function getGraph() {
+    var ajax = ajaxObj("POST", "get_results.php");
+    ajax.onreadystatechange = function() {
+        if(ajaxReturn(ajax) == true) {
+            if (ajax.responseText == "No data") {
+                _('chartdiv').innerHTML = "No data available.";
+            }
+
+            var data = JSON.parse(ajax.responseText);
+            
+            var convertedData = [];
+            for (var i = 0; i < data.length; i++) {
+                convertedData.push({
+                    "weight": data[i][0],
+                    "date": data[i][1],
+                    "color": "#FF0F00"
+                });
+            }
+            
+            var chart = AmCharts.makeChart("chartdiv", {
+                "type": "serial",
+                "theme": "light",
+                "marginRight": 90,
+                "dataProvider": convertedData,
+                    "valueAxes": [{
+                    "axisAlpha": 0,
+                    "position": "left",
+                    "title": "Weight"
+                }],
+                "startDuration": 1,
+                "graphs": [{
+                    "balloonText": "<b>[[category]]: [[value]]</b>",
+                    "fillColorsField": "color",
+                    "fillAlphas": 0.9,
+                    "lineAlpha": 0.2,
+                    "type": "smoothedLine",
+                    "valueField": "weight"
+                }],
+                    "chartCursor": {
+                    "categoryBalloonEnabled": false,
+                    "cursorAlpha": 0,
+                    "zoomable": false
+                },
+                "categoryField": "date",
+                "categoryAxis": {
+                    "gridPosition": "start",
+                    "labelRotation": 45
+                },
+                    "export": {
+                    "enabled": true
+                }
+            });
+            
+            var chartScrollbar = new AmCharts.ChartScrollbar();
+            chart.addChartScrollbar(chartScrollbar);
+            
+            if (data[data.length - 2] < data[data.length - 1]) {
+                _('status').innerHTML = "You gained weight.";
+            } else {
+                _('status').innerHTML = "You lost weight.";
+            }
+        }
+    }
+    ajax.send();
+}
