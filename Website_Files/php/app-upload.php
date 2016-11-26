@@ -14,6 +14,17 @@
     <link type="text/css" rel="stylesheet" href="../css/app.css">
     <script src="../js/jquery-3.1.0.min.js"></script>
     <script src="../js/js_mods.js"></script>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="http://cdn.jtsage.com/jtsage-datebox/4.0.0/jtsage-datebox-4.0.0.bootstrap.min.css" />
+    <link rel="stylesheet" href="http://dev.jtsage.com/DateBox/css/syntax.css" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="http://cdn.jtsage.com/external/jquery.mousewheel.min.js"></script>
+    <script type="text/javascript" src="http://dev.jtsage.com/DateBox/js/doc.js"></script>
+    <script type="text/javascript" src="http://cdn.jtsage.com/jtsage-datebox/4.0.0/jtsage-datebox-4.0.0.bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://cdn.jtsage.com/jtsage-datebox/i18n/jtsage-datebox.lang.utf8.js"></script>
 </head>
 
 <body>
@@ -39,6 +50,9 @@
                 <form id="uploadForm" action="upload.php" method="post" enctype="multipart/form-data" data-ajax=false>
                     <label for="basic">Enter Title of Data Entry:</label>
                     <input type="text" name="title" id="titleInput" value="" required/>
+                    
+                    <label for="basic">Enter The Date:</label>
+                    <input type="date" data-role="datebox" name="date" data-options='{"mode": "datebox", "overrideDateFormat": "%m/%d/%Y"}' required/>
                     
                     <label for="basic">Enter Your Weight:</label>
                     <input type="text" name="weight" id="weightInput" value="" onblur="checkWeight()" required/>

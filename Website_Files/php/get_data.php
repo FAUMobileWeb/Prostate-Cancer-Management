@@ -39,8 +39,7 @@
             $timestamp = strtotime($data['timestamp']);
             $date = date('m-d-Y', $timestamp);
             
-            $time_ = date('Gi.s', $timestamp);
-            $time = substr($time_, 0, 2) . ':' . substr($time_, 2, 2);
+            $time = date('G:i', $timestamp);
             
             $new_item = "<p>Title: $title</p><p>Weight: $weight</p><p>Date Submitted: $date</p><p>Time Submitted: $time</p>";
                 

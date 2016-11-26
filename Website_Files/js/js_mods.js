@@ -226,48 +226,88 @@ function getGraph() {
             var convertedData = [];
             for (var i = 0; i < data.length; i++) {
                 convertedData.push({
-                    "weight": data[i][0],
-                    "date": data[i][1],
-                    "color": "#FF0F00"
+                    "value": data[i][0],
+                    "date": data[i][1]
                 });
             }
             
             var chart = AmCharts.makeChart("chartdiv", {
                 "type": "serial",
                 "theme": "light",
-                "marginRight": 90,
-                "dataProvider": convertedData,
-                    "valueAxes": [{
+                "marginRight": 40,
+                "marginLeft": 40,
+                "autoMarginOffset": 20,
+                "mouseWheelZoomEnabled":true,
+                "dataDateFormat": "YYYY-MM-DD",
+                "valueAxes": [{
+                    "id": "v1",
                     "axisAlpha": 0,
                     "position": "left",
-                    "title": "Weight"
+                    "ignoreAxisWidth":true
                 }],
-                "startDuration": 1,
+                "balloon": {
+                    "borderThickness": 1,
+                    "shadowAlpha": 0
+                },
                 "graphs": [{
-                    "balloonText": "<b>[[category]]: [[value]]</b>",
-                    "fillColorsField": "color",
-                    "fillAlphas": 0.9,
-                    "lineAlpha": 0.2,
-                    "type": "smoothedLine",
-                    "valueField": "weight"
+                    "id": "g1",
+                    "balloon":{
+                      "drop":true,
+                      "adjustBorderColor":false,
+                      "color":"#ffffff"
+                    },
+                    "bullet": "round",
+                    "bulletBorderAlpha": 1,
+                    "bulletColor": "#FFFFFF",
+                    "bulletSize": 5,
+                    "hideBulletsCount": 50,
+                    "lineThickness": 2,
+                    "title": "red line",
+                    "useLineColorForBulletBorder": true,
+                    "valueField": "value",
+                    "balloonText": "<span style='font-size:18px;'>[[value]]</span>"
                 }],
-                    "chartCursor": {
-                    "categoryBalloonEnabled": false,
-                    "cursorAlpha": 0,
-                    "zoomable": false
+                "chartScrollbar": {
+                    "graph": "g1",
+                    "oppositeAxis":false,
+                    "offset":30,
+                    "scrollbarHeight": 80,
+                    "backgroundAlpha": 0,
+                    "selectedBackgroundAlpha": 0.1,
+                    "selectedBackgroundColor": "#888888",
+                    "graphFillAlpha": 0,
+                    "graphLineAlpha": 0.5,
+                    "selectedGraphFillAlpha": 0,
+                    "selectedGraphLineAlpha": 1,
+                    "autoGridCount":true,
+                    "color":"#AAAAAA"
+                },
+                "chartCursor": {
+                    "pan": true,
+                    "valueLineEnabled": true,
+                    "valueLineBalloonEnabled": true,
+                    "cursorAlpha":1,
+                    "cursorColor":"#258cbb",
+                    "limitToGraph":"g1",
+                    "valueLineAlpha":0.2,
+                    "valueZoomable":true
+                },
+                "valueScrollbar":{
+                  "oppositeAxis":false,
+                  "offset":50,
+                  "scrollbarHeight":10
                 },
                 "categoryField": "date",
                 "categoryAxis": {
-                    "gridPosition": "start",
-                    "labelRotation": 45
+                    "parseDates": true,
+                    "dashLength": 1,
+                    "minorGridEnabled": true
                 },
-                    "export": {
+                "export": {
                     "enabled": true
-                }
+                },
+                "dataProvider": convertedData
             });
-            
-            var chartScrollbar = new AmCharts.ChartScrollbar();
-            chart.addChartScrollbar(chartScrollbar);
             
             if (data[data.length - 2] < data[data.length - 1]) {
                 _('status').innerHTML = "You gained weight.";
@@ -277,4 +317,8 @@ function getGraph() {
         }
     }
     ajax.send();
+}
+
+function zoomChart() {
+    chart.zoomToIndexes(chart.dataProvider.length - 40, chart.dataProvider.length - 1);
 }

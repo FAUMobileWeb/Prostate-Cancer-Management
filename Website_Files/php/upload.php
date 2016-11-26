@@ -120,6 +120,9 @@ function smart_resize_image($file,
         $title = $_POST['title'];
         $weight = $_POST['weight'];
         
+        $date = date("Y-m-d", strtotime($_POST['date']));
+        $combinedDT = $date . ' ' . date('H:i:s');
+
         if (empty($title) || empty($weight)) {
             header("location: message.php?msg=Fill out all the fields!");
         }
@@ -128,9 +131,9 @@ function smart_resize_image($file,
             $size = 0;
         } else {
             $size = count($_FILES['fileInput']['name']);
-        }
+        }   
         
-        $sql = "INSERT INTO data (user_id, title, weight) VALUES (".$_SESSION['userid'].", '$title', $weight)";
+        $sql = "INSERT INTO data (user_id, title, weight, timestamp) VALUES (".$_SESSION['userid'].", '$title', $weight, '$combinedDT')";
         mysqli_query($db, $sql) or die(mysqli_error($db));
         $sql = "SELECT max(id) FROM data";
         $query = mysqli_query($db, $sql);
@@ -148,6 +151,10 @@ function smart_resize_image($file,
     
         $uploadedIds = [];
         for ($i = 0; $i < $size; $i++) {
+            if (!$formOk) {
+                break;
+            }
+            
             if (!in_array($_FILES['fileInput']['type'][$i], array('image/png', 'image/jpeg', 'image/jpe', 'image/gif', 'image/jpg'))) {
                 $formOk = false;
                 $msg = "Error: Unsupported file extension. Supported extensions are JPG / PNG / GIF.";
@@ -166,7 +173,7 @@ function smart_resize_image($file,
                 break;
             }
         
-            echo smart_resize_image($_FILES['fileInput']['tmp_name'][$i], 
+            smart_resize_image($_FILES['fileInput']['tmp_name'][$i], 
                                    file_get_contents($_FILES['fileInput']['tmp_name'][$i]),
                                     500, 500, false, $_FILES['fileInput']['tmp_name'][$i],
                                    true, false, 45);

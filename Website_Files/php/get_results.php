@@ -12,7 +12,7 @@
     while ($data = mysqli_fetch_assoc($query)) {
         $weight = $data['weight'];
         $timestamp = strtotime($data['timestamp']);
-        $date = date('m-d-Y', $timestamp);
+        $date = date('Y-m-d', $timestamp);
 
         array_push($rows, array($weight, $date));
     }
