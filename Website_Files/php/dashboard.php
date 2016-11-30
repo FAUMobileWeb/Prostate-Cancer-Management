@@ -38,7 +38,7 @@
             // Now make sure that user exists in the table
             $numrows = mysqli_num_rows($user_query);
             if($numrows < 1){
-                echo "That user does not exist or is not yet activated, press back";
+                echo "<script>logout()</script>";
                 exit();	
             }
 
