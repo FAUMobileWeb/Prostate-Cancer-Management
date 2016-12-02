@@ -1,4 +1,4 @@
 # Prostate-Cancer-Management
 Mobile Web App
 
-Team Members: Ericky and Tim
+Team Members: Ericky and Damoy
